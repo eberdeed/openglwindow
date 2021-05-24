@@ -1,0 +1,4 @@
+<map id="WindowSpawn" name="WindowSpawn">
+<area shape="rect" id="node2" href="$classCreateImage.html" title="CreateImage" alt="" coords="5,5,103,32"/>
+<area shape="rect" id="node3" href="$classCamera.html" title="Camera" alt="" coords="127,5,195,32"/>
+</map>

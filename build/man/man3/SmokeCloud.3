@@ -1,0 +1,124 @@
+.TH "SmokeCloud" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SmokeCloud
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSmokeCloud\fP (\fBShader\fP *\fBshader\fP)"
+.br
+.RI "Pass the shader during class instantiaton\&. "
+.ti -1c
+.RI "\fB~SmokeCloud\fP ()"
+.br
+.RI "Destroy the class\&. "
+.ti -1c
+.RI "void \fBinitFire\fP ()"
+.br
+.RI "initFire defines the particles and their paths while also providing the lifespan of each particle\&. "
+.ti -1c
+.RI "void \fBdefineObjects\fP ()"
+.br
+.RI "defineObjects defines the OpenGL buffer array used to draw the cloud\&. "
+.ti -1c
+.RI "void \fBdebug\fP ()"
+.br
+.RI "debug provides the particle information\&. "
+.ti -1c
+.RI "void \fBlogSDLError\fP (ostream &os, const string &msg)"
+.br
+.RI "Pass an output stream and message for error reporting\&. "
+.ti -1c
+.RI "void \fBdrawCloud\fP (mat4 model, mat4 view, float interval)"
+.br
+.RI "Draw the cloud\&. model : Cloud position and orientation\&. view : \fBCamera\fP position and orientation\&. projection : The Affine perspective matrix\&. interval : The current frame being drawn\&. "
+.ti -1c
+.RI "void \fBprintVec3\fP (vec3 vecVal)"
+.br
+.RI "Debug: Print a vec3\&. "
+.ti -1c
+.RI "void \fBprintVec4\fP (vec4 vecVal)"
+.br
+.RI "Debug: Print a vec4\&. "
+.ti -1c
+.RI "void \fBprintMat4\fP (mat4 matVal)"
+.br
+.RI "Debug: Print a mat4\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const float \fBpi180\fP = acos(\-1\&.0f)"
+.br
+.RI "180 degrees in radians\&. "
+.ti -1c
+.RI "const float \fBpi360\fP = acos(\-1\&.0f) * 2\&.0f"
+.br
+.RI "360 degrees in radians\&. "
+.ti -1c
+.RI "vec4 \fBcolor\fP"
+.br
+.RI "Explosion color\&. "
+.ti -1c
+.RI "mat4 \fBscaler\fP"
+.br
+.RI "Explosion scaler\&. "
+.ti -1c
+.RI "random_device \fBrd\fP"
+.br
+.RI "Define a random float generator\&. "
+.ti -1c
+.RI "mt19937 \fBgenerator\fP"
+.br
+.ti -1c
+.RI "uniform_real_distribution< float > \fBrandomFloats\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP * \fBshader\fP"
+.br
+.RI "For the display of the gaseous cloud\&. "
+.ti -1c
+.RI "vec4 \fBparticles\fP [NUM_PARTICLES]"
+.br
+.ti -1c
+.RI "chrono::system_clock::time_point \fBtdata\fP"
+.br
+.RI "The time point to seed the random number generator\&. "
+.ti -1c
+.RI "GLuint \fBVAO\fP = 0"
+.br
+.RI "The OpenGL buffer and vertex array handles\&. "
+.ti -1c
+.RI "GLuint \fBVBO\fP = 0"
+.br
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+spinning cloud of particles\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void SmokeCloud::initFire ()"
+
+.PP
+initFire defines the particles and their paths while also providing the lifespan of each particle\&. Spherical coordinates\&. phi
+.PP
+rho
+.PP
+radius 
+.SH "Member Data Documentation"
+.PP 
+.SS "vec4 SmokeCloud::particles[NUM_PARTICLES]"
+The array containing the particle data -- spherical coordinates\&. particles[0] = phi particles[1] = rho particles[2] = radius particles[3] = particle lifetime 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

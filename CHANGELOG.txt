@@ -1,0 +1,11 @@
+
+    Change Log for OpenGLWindow
+
+    04/22/20 Initial program written and documented.
+    ECE
+
+    05/09/2020 Added SFML to the types of windows and redocumented.
+    ECE
+
+    libassimpopengl.so.1.0 made uniform across progams.
+    ECE 05/24/21    

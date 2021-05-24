@@ -1,0 +1,174 @@
+.TH "ThreadCreate" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ThreadCreate
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBThreadCreate\fP (string threadName, vector< \fBThreadInfo\fP >threadInfo)"
+.br
+.RI "Class global variables are assigned here\&. "
+.ti -1c
+.RI "\fB~ThreadCreate\fP ()"
+.br
+.RI "The destruction of the class is echoed here\&. "
+.ti -1c
+.RI "int \fBexecute\fP (void *func(void *), int threadNum)"
+.br
+.RI "Here the thread is created and execution begins\&. "
+.ti -1c
+.RI "void \fBjoinThread\fP (int threadNum)"
+.br
+.RI "Threads are joined only after execution is complete\&. "
+.ti -1c
+.RI "void \fBcancelThread\fP (int threadNum)"
+.br
+.RI "Threads are cancelled at any time\&. "
+.ti -1c
+.RI "\fBThreadInfo\fP \fBgetInfo\fP (int threadNum)"
+.br
+.RI "accessor function to access thread information\&. "
+.ti -1c
+.RI "\fBThreadCreate\fP (string threadName, vector< \fBThreadInfo\fP >threadInfo)"
+.br
+.RI "Class global variables are assigned here\&. "
+.ti -1c
+.RI "\fB~ThreadCreate\fP ()"
+.br
+.RI "The destruction of the class is echoed here\&. "
+.ti -1c
+.RI "int \fBexecute\fP (void *func(void *), int threadNum)"
+.br
+.RI "Here the thread is created and execution begins\&. "
+.ti -1c
+.RI "void \fBjoinThread\fP (int threadNum)"
+.br
+.RI "Threads are joined only after execution is complete\&. "
+.ti -1c
+.RI "void \fBcancelThread\fP (int threadNum)"
+.br
+.RI "Threads are cancelled at any time\&. "
+.ti -1c
+.RI "\fBThreadInfo\fP \fBgetInfo\fP (int threadNum)"
+.br
+.RI "accessor function to access thread information\&. "
+.ti -1c
+.RI "\fBThreadCreate\fP (string threadName, vector< \fBThreadInfo\fP >threadInfo)"
+.br
+.RI "Class global variables are assigned here\&. "
+.ti -1c
+.RI "\fB~ThreadCreate\fP ()"
+.br
+.RI "The destruction of the class is echoed here\&. "
+.ti -1c
+.RI "int \fBexecute\fP (void *func(void *), int threadNum)"
+.br
+.RI "Here the thread is created and execution begins\&. "
+.ti -1c
+.RI "void \fBjoinThread\fP (int threadNum)"
+.br
+.RI "Threads are joined only after execution is complete\&. "
+.ti -1c
+.RI "void \fBcancelThread\fP (int threadNum)"
+.br
+.RI "Threads are cancelled at any time\&. "
+.ti -1c
+.RI "\fBThreadInfo\fP \fBgetInfo\fP (int threadNum)"
+.br
+.RI "accessor function to access thread information\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdisplayPthread\fP (pthread_attr_t *attr, int threadNum)"
+.br
+.RI "Debug information about the thread\&. "
+.ti -1c
+.RI "void \fBhandle_error_en\fP (int en, string msg)"
+.br
+.RI "Display an error message with and error code and exit\&. "
+.ti -1c
+.RI "void \fBhandle_error\fP (string msg)"
+.br
+.RI "Display an error message without and error code and exit\&. "
+.ti -1c
+.RI "void \fBdisplayPthread\fP (pthread_attr_t *attr, int threadNum)"
+.br
+.RI "Debug information about the thread\&. "
+.ti -1c
+.RI "void \fBhandle_error_en\fP (int en, string msg)"
+.br
+.RI "Display an error message with and error code and exit\&. "
+.ti -1c
+.RI "void \fBhandle_error\fP (string msg)"
+.br
+.RI "Display an error message without and error code and exit\&. "
+.ti -1c
+.RI "void \fBdisplayPthread\fP (pthread_attr_t *attr, int threadNum)"
+.br
+.RI "Debug information about the thread\&. "
+.ti -1c
+.RI "void \fBhandle_error_en\fP (int en, string msg)"
+.br
+.RI "Display an error message with and error code and exit\&. "
+.ti -1c
+.RI "void \fBhandle_error\fP (string msg)"
+.br
+.RI "Display an error message without and error code and exit\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBs\fP"
+.br
+.RI "The pthread function response values\&. "
+.ti -1c
+.RI "int \fBi\fP"
+.br
+.ti -1c
+.RI "size_t \fBv\fP"
+.br
+.RI "A pthread function response quantity\&. "
+.ti -1c
+.RI "vector< \fBThreadInfo\fP > \fBtinfo\fP"
+.br
+.RI "The vector of thread information\&. "
+.ti -1c
+.RI "void * \fBstkaddr\fP"
+.br
+.RI "The address of the stack in memory\&. "
+.ti -1c
+.RI "sched_param \fBsp\fP"
+.br
+.RI "The scheduling parameter\&. "
+.ti -1c
+.RI "pthread_attr_t * \fBthreadAttr\fP"
+.br
+.RI "The thread attribute structure\&. "
+.ti -1c
+.RI "int \fBnumThreads\fP"
+.br
+.RI "The number of threads to execute\&. "
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "The name of the current thread\&. "
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.RI "The debug flag\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate the creation and destruction of a pthread\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

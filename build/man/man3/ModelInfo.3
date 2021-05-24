@@ -1,0 +1,66 @@
+.TH "ModelInfo" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ModelInfo \- The blender objects definition in the program\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <info\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBpath\fP"
+.br
+.ti -1c
+.RI "vector< \fBMeshInfo\fP > \fBmeshes\fP"
+.br
+.ti -1c
+.RI "mat4 \fBmodel\fP"
+.br
+.ti -1c
+.RI "vec3 \fBlocation\fP"
+.br
+.ti -1c
+.RI "int \fBdist\fP = 0"
+.br
+.ti -1c
+.RI "int \fBidval\fP = 0"
+.br
+.ti -1c
+.RI "bool \fBdiffOnly\fP = true"
+.br
+.ti -1c
+.RI "float \fBgamma\fP = 1\&.0f"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The blender objects definition in the program\&. 
+
+A series of structures to encapsulate:
+.IP "1." 4
+The location of the blender object in the file structure: string path;
+.IP "2." 4
+The meshes and textures of a blender object (each mesh may have multiple textures)\&. vector<MeshInfo> meshes;
+.IP "3." 4
+The affine transform matrix defining position and orientation: mat4 model;
+.IP "4." 4
+Location is provided so a sort by distance so the camera can be instituted\&. The affine transformation should be created using a translation with this value: vec3 location:
+.IP "5." 4
+A distance variable so the vector can be sorted by distance: int dist = 0;
+.IP "6." 4
+An identification value so the vector can be sorted into it's original order: int idval = 0;
+.IP "7." 4
+A boolean to identify diffuse only objects: bool diffOnly = true;
+.IP "8." 4
+A gamma variable to control brightness: float gamma = 1\&.0f; 
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

@@ -1,0 +1,55 @@
+.TH "UniformPrinter" 3 "Wed May 19 2021" "Assimp OpenGL" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UniformPrinter
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUniformPrinter\fP (int progObj)"
+.br
+.RI "Constructor: requires the shader program object\&. "
+.ti -1c
+.RI "\fB~UniformPrinter\fP ()"
+.br
+.RI "Destructor\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprintUniforms\fP ()"
+.br
+.RI "Print the active uniforms\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBmaxUniformLen\fP"
+.br
+.RI "Class global variables\&. "
+.ti -1c
+.RI "int \fBnumUniforms\fP"
+.br
+.ti -1c
+.RI "int \fBindex\fP"
+.br
+.ti -1c
+.RI "int \fBprogObj\fP"
+.br
+.ti -1c
+.RI "char * \fBuniformName\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate printing out the unforms from a shader program\&. Gives the location of the uniform and it's status\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Assimp OpenGL from the source code\&.

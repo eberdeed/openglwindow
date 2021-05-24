@@ -1,0 +1,289 @@
+.TH "WindowSpawn" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WindowSpawn
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWindowSpawn\fP ()"
+.br
+.RI "Initialize variables and the program and start program execution\&. "
+.ti -1c
+.RI "\fB~WindowSpawn\fP ()"
+.br
+.RI "Destroy the SDL textures used to create the buttons\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitProg\fP ()"
+.br
+.RI "Initialize the program by creating the window\&. "
+.ti -1c
+.RI "void \fBdefineObjects\fP ()"
+.br
+.RI "Define the surfaces and textures for the buttons\&. "
+.ti -1c
+.RI "void \fBeventLoop\fP ()"
+.br
+.RI "Program event loop to draw the screen\&. "
+.ti -1c
+.RI "void \fBframebufferSize\fP (int \fBwidth\fP, int height)"
+.br
+.RI "Change the OpenGL viewport size\&. "
+.ti -1c
+.RI "void \fBwindowEvent\fP (SDL_Event e)"
+.br
+.RI "Handle window events like maximizing and minimizing the window\&. "
+.ti -1c
+.RI "void \fBmouseMove\fP (SDL_Event e)"
+.br
+.RI "Handle mouse clicks\&. "
+.ti -1c
+.RI "void \fBlogSDLError\fP (ostream &os, const string &msg)"
+.br
+.RI "Print associated error messages\&. "
+.ti -1c
+.RI "void * \fBflipImage\fP (void *data, int \fBwidth\fP, int height)"
+.br
+.RI "Reverse the order of the rows of data in an image\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "SDL_Window * \fBwindow\fP"
+.br
+.RI "SDL window variables\&. "
+.ti -1c
+.RI "SDL_Renderer * \fBrenderer\fP"
+.br
+.ti -1c
+.RI "SDL_GLContext \fBcontext\fP"
+.br
+.ti -1c
+.RI "\fBCreateImage\fP * \fBimage\fP"
+.br
+.RI "Image management class\&. "
+.ti -1c
+.RI "void * \fBpixelData\fP"
+.br
+.RI "Void blob to hold the picture data\&. "
+.ti -1c
+.RI "unsigned char * \fBreverseData\fP"
+.br
+.RI "Another void blob to hold the vertically reversed picture data\&. "
+.ti -1c
+.RI "int \fBwidth\fP"
+.br
+.RI "Picture variables defining the picture\&. "
+.ti -1c
+.RI "int \fBheight\fP"
+.br
+.ti -1c
+.RI "int \fBdepth\fP = 8"
+.br
+.ti -1c
+.RI "int \fBpitch\fP"
+.br
+.ti -1c
+.RI "int \fBsize\fP"
+.br
+.ti -1c
+.RI "SDL_Rect \fBbuttonSize\fP [8]"
+.br
+.RI "Rectangles to define the button and title locations as well as a temporary value\&. "
+.ti -1c
+.RI "SDL_Rect \fBtmpButton\fP"
+.br
+.ti -1c
+.RI "bool \fBclicked\fP [7]"
+.br
+.RI "Booleans to define where the use has last clicked on the screen\&. "
+.ti -1c
+.RI "SDL_Surface * \fBsdlredbttn\fP"
+.br
+.RI "SDL surfaces to define the buttons and titles\&. "
+.ti -1c
+.RI "SDL_Surface * \fBsdllilacbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBglutredbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBglutlilacbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBglfwredbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBglfwlilacbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBallegroredbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBallegrolilacbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBsfmlredbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBsfmllilacbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBopengltitleimage\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBcloseredbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBcloselilacbttn\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBsdlred\fP"
+.br
+.RI "SDL textures to define the buttons and titles\&. "
+.ti -1c
+.RI "SDL_Texture * \fBsdllilac\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBglutred\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBglutlilac\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBglfwred\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBglfwlilac\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBallegrored\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBallegrolilac\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBsfmlred\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBsfmllilac\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBopengltitle\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBclosered\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBcloselilac\fP"
+.br
+.ti -1c
+.RI "string \fBbuttons\fP [15]"
+.br
+.RI "File names for the button and title images\&. "
+.ti -1c
+.RI "string \fBprogTitles\fP [6]"
+.br
+.RI "Names of the programs to execute\&. "
+.ti -1c
+.RI "vec2 \fBmousePos1\fP"
+.br
+.RI "Mouse location variable\&. "
+.ti -1c
+.RI "unsigned int \fBSCR_WIDTH\fP = 1000"
+.br
+.RI "Screen width\&. "
+.ti -1c
+.RI "unsigned int \fBSCR_HEIGHT\fP = 700"
+.br
+.RI "Screen height\&. "
+.ti -1c
+.RI "\fBCamera\fP * \fBcamera\fP"
+.br
+.RI "The camera class defining camera location and orientation\&. "
+.ti -1c
+.RI "mat4 \fBview\fP"
+.br
+.RI "The affine transform matrices defining view and perspective\&. "
+.ti -1c
+.RI "mat4 \fBprojection\fP"
+.br
+.ti -1c
+.RI "vec3 \fBviewPos\fP"
+.br
+.RI "The camera position\&. "
+.ti -1c
+.RI "chrono::system_clock::time_point \fBintbegin\fP"
+.br
+.RI "Timing for the animation and the camera\&. "
+.ti -1c
+.RI "chrono::system_clock::time_point \fBintend\fP"
+.br
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.RI "Boolean flag for debug\&. "
+.ti -1c
+.RI "_XDisplay * \fBd\fP"
+.br
+.RI "Xlib objects to define display size\&. "
+.ti -1c
+.RI "Screen * \fBs\fP"
+.br
+.ti -1c
+.RI "bool \fBquit\fP = false"
+.br
+.RI "Boolean to define end of program\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to call all the programs provided, demonstrating OpenGL in their respective library's window\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "string WindowSpawn::buttons[15]\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+    {
+        "/usr/share/openglresources/buttons/sdlred\&.png",
+        "/usr/share/openglresources/buttons/sdllilac\&.png",
+        "/usr/share/openglresources/buttons/glutred\&.png",
+        "/usr/share/openglresources/buttons/glutlilac\&.png",
+        "/usr/share/openglresources/buttons/glfwred\&.png",
+        "/usr/share/openglresources/buttons/glfwlilac\&.png",
+        "/usr/share/openglresources/buttons/allegrored\&.png",
+        "/usr/share/openglresources/buttons/allegrolilac\&.png",
+        "/usr/share/openglresources/buttons/sfmlred\&.png",
+        "/usr/share/openglresources/buttons/sfmllilac\&.png",
+        "/usr/share/openglresources/buttons/closered\&.png",
+        "/usr/share/openglresources/buttons/closelilac\&.png",
+        "/usr/share/openglresources/buttons/opengltitle\&.png"
+    }
+.fi
+.PP
+File names for the button and title images\&. 
+.SS "string WindowSpawn::progTitles[6]\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+    {
+        "openglsdl2", "openglglut", "openglglfw3", "openglallegro", "openglsfml"
+    }
+.fi
+.PP
+Names of the programs to execute\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

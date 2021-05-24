@@ -1,0 +1,183 @@
+.TH "OpenGLSDL2" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpenGLSDL2
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpenGLSDL2\fP ()"
+.br
+.RI "Initialize the program and start the event loop\&. "
+.ti -1c
+.RI "\fB~OpenGLSDL2\fP ()"
+.br
+.RI "Destroy the program objects\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitProg\fP ()"
+.br
+.RI "Create the SDL window\&. "
+.ti -1c
+.RI "void \fBeventLoop\fP ()"
+.br
+.RI "the event loop to draw the window\&. "
+.ti -1c
+.RI "void \fBframebufferSize\fP (int width, int height)"
+.br
+.RI "adjust the size of the OpenGL viewport\&. "
+.ti -1c
+.RI "void \fBkeyDown\fP (SDL_Event e)"
+.br
+.RI "Handle key events\&. "
+.ti -1c
+.RI "void \fBwindowEvent\fP (SDL_Event e)"
+.br
+.RI "Handle window events\&. "
+.ti -1c
+.RI "void \fBmouseMove\fP (SDL_Event e)"
+.br
+.RI "Handle mouse motion events\&. "
+.ti -1c
+.RI "void \fBlogSDLError\fP (ostream &os, const string &msg)"
+.br
+.RI "Display error messages\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBsndMaker\fP ()"
+.br
+.RI "A static sound creation function that can fit in a thread\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "SDL_Thread * \fBthread\fP"
+.br
+.RI "A thread to hold the sound function\&. "
+.ti -1c
+.RI "SDL_Window * \fBwindow\fP"
+.br
+.RI "The SDL window variables\&. "
+.ti -1c
+.RI "SDL_Renderer * \fBrenderer\fP"
+.br
+.ti -1c
+.RI "SDL_GLContext \fBcontext\fP"
+.br
+.ti -1c
+.RI "vec2 \fBmousePos1\fP"
+.br
+.RI "Mouse position variables\&. "
+.ti -1c
+.RI "vec2 \fBmousePos2\fP"
+.br
+.ti -1c
+.RI "bool \fBaltSet\fP = false"
+.br
+.ti -1c
+.RI "bool \fBfirstMouse\fP = true"
+.br
+.ti -1c
+.RI "unsigned int \fBSCR_WIDTH\fP = 1000"
+.br
+.RI "Start up screen width\&. "
+.ti -1c
+.RI "unsigned int \fBSCR_HEIGHT\fP = 700"
+.br
+.RI "Start up screen height\&. "
+.ti -1c
+.RI "\fBOpenGLWindow\fP * \fBdatagen\fP"
+.br
+.RI "The scene drawing class\&. "
+.ti -1c
+.RI "\fBCamera\fP * \fBcamera\fP"
+.br
+.RI "The camera class to define camera location and orientation\&. "
+.ti -1c
+.RI "mat4 \fBview\fP"
+.br
+.RI "The affine transforms for view and perspective\&. "
+.ti -1c
+.RI "mat4 \fBprojection\fP"
+.br
+.ti -1c
+.RI "vec3 \fBviewPos\fP"
+.br
+.RI "The camera position\&. "
+.ti -1c
+.RI "chrono::system_clock::time_point \fBintbegin\fP"
+.br
+.RI "Timing for the animation and the camera\&. "
+.ti -1c
+.RI "chrono::system_clock::time_point \fBintend\fP"
+.br
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.RI "The debug flag\&. "
+.ti -1c
+.RI "int \fBthreadReturnValue\fP"
+.br
+.RI "Thread return value\&. "
+.ti -1c
+.RI "_XDisplay * \fBd\fP"
+.br
+.RI "The Xlib objects to determine display size\&. "
+.ti -1c
+.RI "Screen * \fBs\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate an SDL2 Window\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void OpenGLSDL2::eventLoop ()\fC [protected]\fP"
+
+.PP
+the event loop to draw the window\&. render 
+.SS "void OpenGLSDL2::keyDown (SDL_Event e)\fC [protected]\fP"
+
+.PP
+Handle key events\&. Use timing to create a cameraSpeed variable\&.
+.PP
+Motion keys\&.
+.PP
+Forward motion\&.
+.PP
+Backwards motion\&.
+.PP
+Move left\&.
+.PP
+Move right\&.
+.PP
+Move up\&.
+.PP
+Move down\&.
+.PP
+Reset the camera\&.
+.PP
+Reverse the camera\&.
+.PP
+Zoom keys\&. Zoom in\&.
+.PP
+Zoom out\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "bool OpenGLSDL2::altSet = false\fC [protected]\fP"
+Booleans to define holding down the alt key and the first use of the mouse\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

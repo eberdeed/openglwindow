@@ -1,0 +1,123 @@
+.TH "CreateImage" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CreateImage
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCreateImage\fP ()"
+.br
+.RI "Echo the creation of the class\&. "
+.ti -1c
+.RI "\fB~CreateImage\fP ()"
+.br
+.RI "Free the storage used by the pixels array\&. "
+.ti -1c
+.RI "bool \fBsetImage\fP (string imagefile)"
+.br
+.RI "Load image and convert it\&. "
+.ti -1c
+.RI "GLsizei \fBgetWidth\fP ()"
+.br
+.RI "Accessor functions to pass along the data\&. "
+.ti -1c
+.RI "GLsizei \fBgetHeight\fP ()"
+.br
+.RI "Image height in pixels\&. "
+.ti -1c
+.RI "GLsizei \fBgetSize\fP ()"
+.br
+.RI "The overall size of the image in bytes\&. "
+.ti -1c
+.RI "GLvoid * \fBgetData\fP ()"
+.br
+.RI "The void* blob containing the picture data\&. "
+.ti -1c
+.RI "GLuint \fBtextureObject\fP ()"
+.br
+.RI "Return an OpenGL buffer object\&. "
+.ti -1c
+.RI "void \fBcreateSkyBoxTex\fP (GLuint &textureID, string filenames[6])"
+.br
+.RI "Return an OpenGL sky box object\&. "
+.ti -1c
+.RI "void \fBcreate2DTexArray\fP (GLuint &textureID, vector< string >filenames)"
+.br
+.RI "Create an array of images for an OpenGL Texture2DArray object\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "fipImage \fBtxtImage\fP"
+.br
+.ti -1c
+.RI "BYTE * \fBpicLine\fP"
+.br
+.RI "A line of image data\&. "
+.ti -1c
+.RI "GLsizei \fBwidth\fP"
+.br
+.RI "Image dimensions\&. "
+.ti -1c
+.RI "GLsizei \fBheight\fP"
+.br
+.ti -1c
+.RI "int \fBsize\fP = 0"
+.br
+.RI "The size in bytes\&. "
+.ti -1c
+.RI "unsigned char * \fBpixels\fP = nullptr"
+.br
+.RI "Image data\&. "
+.ti -1c
+.RI "int \fBcount\fP"
+.br
+.RI "Byte and line counters\&. "
+.ti -1c
+.RI "int \fBline\fP"
+.br
+.ti -1c
+.RI "bool \fBdebug1\fP = true"
+.br
+.RI "A little tiny bit of debug info\&. "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void CreateImage::createSkyBoxTex (GLuint & textureID, string filenames[6])"
+
+.PP
+Return an OpenGL sky box object\&. Six images, one texture ID\&.
+.PP
+The order of images in a skybox is reversed\&.
+.br
+
+.br
+'; 
+.SS "GLsizei CreateImage::getWidth ()"
+
+.PP
+Accessor functions to pass along the data\&. Accessor functions for the given image's dimensions and data\&. Image width in pixels\&. 
+.SS "bool CreateImage::setImage (string imagefile)"
+
+.PP
+Load image and convert it\&. Free Image Plus Image loads standard picture\&.
+.PP
+Convert image to four 8 bit fields RGBA\&. 
+.SS "GLuint CreateImage::textureObject ()"
+
+.PP
+Return an OpenGL buffer object\&. Use the \fBCreateImage\fP class to turn an image into a texture\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "fipImage CreateImage::txtImage\fC [protected]\fP"
+Class global variables\&. The Free Image Plus image object\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

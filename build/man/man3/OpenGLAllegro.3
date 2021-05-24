@@ -1,0 +1,138 @@
+.TH "OpenGLAllegro" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpenGLAllegro
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpenGLAllegro\fP ()"
+.br
+.RI "Initialize the program\&. "
+.ti -1c
+.RI "\fB~OpenGLAllegro\fP ()"
+.br
+.RI "Delete the items created by the program\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitProg\fP ()"
+.br
+.RI "Initialize the program by creating the window, the scene, the sound and the camera\&. "
+.ti -1c
+.RI "void \fBevents\fP ()"
+.br
+.RI "The event loop where the picture is drawn and the keyboard and mouse are accounted for\&. "
+.ti -1c
+.RI "void \fBframebufferSize\fP (int width, int height)"
+.br
+.RI "Adjust the viewport and camera view\&. "
+.ti -1c
+.RI "void \fBprocessInput\fP (ALLEGRO_EVENT event)"
+.br
+.RI "Handles the window and mouse events\&. "
+.ti -1c
+.RI "void \fBprocessKey\fP (ALLEGRO_EVENT event)"
+.br
+.RI "Handles the keyboard events\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBaltSet\fP = false"
+.br
+.RI "Booleans to mark holding down the alt key and toggling full screen\&. "
+.ti -1c
+.RI "bool \fBfullScreen\fP = false"
+.br
+.ti -1c
+.RI "\fBOpenGLWindow\fP * \fBdatagen\fP"
+.br
+.RI "The class holding the OpenGL scene\&. "
+.ti -1c
+.RI "\fBCamera\fP * \fBcamera\fP"
+.br
+.RI "The camera to abstract away from system I/O\&. "
+.ti -1c
+.RI "mat4 \fBview\fP"
+.br
+.RI "The view and perspective affine transform matrices\&. "
+.ti -1c
+.RI "mat4 \fBprojection\fP"
+.br
+.ti -1c
+.RI "vec3 \fBviewPos\fP"
+.br
+.RI "The camera position\&. "
+.ti -1c
+.RI "chrono::system_clock::time_point \fBintbegin\fP"
+.br
+.RI "Timing for the animation and the camera\&. "
+.ti -1c
+.RI "chrono::system_clock::time_point \fBintend\fP"
+.br
+.ti -1c
+.RI "ALLEGRO_KEYBOARD_STATE * \fBkeybrd\fP"
+.br
+.RI "Keyboard event state\&. "
+.ti -1c
+.RI "ALLEGRO_AUDIO_STREAM * \fBastream\fP"
+.br
+.RI "Incoming audio stream\&. "
+.ti -1c
+.RI "ALLEGRO_SAMPLE_ID \fBnew_sample_id\fP"
+.br
+.RI "Audio sample ID\&. "
+.ti -1c
+.RI "ALLEGRO_SAMPLE * \fBsample_data\fP [MAX_SAMPLE_DATA] = {NULL}"
+.br
+.RI "Samples to hold audio data\&. "
+.ti -1c
+.RI "string \fBsoundFile\fP = '/usr/share/openglresources/sound/celticfive\&.wav'"
+.br
+.RI "The file where the music is held\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate the showing of an Allegro library window\&. It also provides sound using the Allegro sound module\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void OpenGLAllegro::events ()\fC [protected]\fP"
+
+.PP
+The event loop where the picture is drawn and the keyboard and mouse are accounted for\&. render 
+.SS "void OpenGLAllegro::processKey (ALLEGRO_EVENT event)\fC [protected]\fP"
+
+.PP
+Handles the keyboard events\&. Use timing to create a cameraSpeed variable\&.
+.PP
+Motion keys\&.
+.PP
+Forward motion\&.
+.PP
+Move left\&.
+.PP
+Move right\&.
+.PP
+Move up\&.
+.PP
+Move down\&.
+.PP
+Reset the camera\&.
+.PP
+Reverse the camera\&.
+.PP
+Zoom keys\&. Zoom in\&.
+.PP
+Zoom out\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

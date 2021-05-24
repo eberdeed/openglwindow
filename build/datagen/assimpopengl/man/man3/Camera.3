@@ -1,0 +1,265 @@
+.TH "Camera" 3 "Wed May 19 2021" "Assimp OpenGL" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Camera
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <camera\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCamera_Movement\fP { \fBFORWARD\fP, \fBBACKWARD\fP, \fBLEFT\fP, \fBRIGHT\fP, \fBCLOSER\fP, \fBAWAY\fP, \fBUP\fP, \fBDOWN\fP }
+.RI "Defines several possible options for camera movement\&. Used as abstraction to stay away from window-system specific input methods\&. To access this from the calling class use 'Camera::Camera_Movement::FORWARD,' etc\&. ""
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCamera\fP (int width, int height, vec3 \fBposition\fP=vec3(0\&.0f, 0\&.0f, 2\&.0f), vec3 focus=vec3(0\&.0f, 0\&.0f, 0\&.0f))"
+.br
+.RI "Constructor with vectors to define viewer position and focus\&. width : the width of the viewport\&. height : the height of the viewport\&. position : the position of the camera\&. focus : the position of the object looked at\&. "
+.ti -1c
+.RI "\fBCamera\fP (int width, int height, float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch)"
+.br
+.RI "Constructor with values to define viewer position and Euler angles for direction\&. width : the width of the viewport\&. height : the height of the viewport\&. posX, posY, posZ : the (x, y, z) position of the camera\&. upX, upY, upZ : the (x, y, z) up direction of camera up\&. yaw : yaw (right <-> left)\&. pitch : pitch (up <-> down)\&. "
+.ti -1c
+.RI "\fB~Camera\fP ()"
+.br
+.RI "Destructor to echo the destruction of the class\&. "
+.ti -1c
+.RI "mat4 \fBgetViewMatrix\fP ()"
+.br
+.RI "Returns the LookAt Matrix\&. "
+.ti -1c
+.RI "vec3 \fBgetFrontVec\fP ()"
+.br
+.RI "Get the front vector\&. "
+.ti -1c
+.RI "mat4 \fBgetPerspective\fP ()"
+.br
+.RI "Returns the current perspective matrix\&. "
+.ti -1c
+.RI "void \fBresizeView\fP (int width, int height)"
+.br
+.RI "Allows for viewport resize\&. "
+.ti -1c
+.RI "void \fBresetCamera\fP ()"
+.br
+.RI "Return the camera to its original settings\&. "
+.ti -1c
+.RI "vec3 \fBgetPosition\fP ()"
+.br
+.RI "Get the camera position\&. "
+.ti -1c
+.RI "mat4 \fBmissilePosition\fP (float timeVal, bool start)"
+.br
+.RI "Get the missile position\&. "
+.ti -1c
+.RI "mat4 \fBshipPosition\fP ()"
+.br
+.RI "Get the location and orientation of the ship position\&. "
+.ti -1c
+.RI "void \fBsetPosition\fP (vec3 \fBposition\fP)"
+.br
+.RI "Set the camera position\&. "
+.ti -1c
+.RI "void \fBsetFocus\fP (vec3 focus)"
+.br
+.RI "Set the front position\&. "
+.ti -1c
+.RI "void \fBprintVec3\fP (vec3 vecVal)"
+.br
+.RI "Print a vec3\&. "
+.ti -1c
+.RI "void \fBprintMat4\fP (mat4 matVal)"
+.br
+.RI "Print a mat4\&. "
+.ti -1c
+.RI "mat4 \fBmultMat4\fP (mat4 itemone, mat4 itemtwo)"
+.br
+.ti -1c
+.RI "void \fBreverseDirection\fP ()"
+.br
+.RI "Rotate the camera 180 degrees on the XZ plane\&. "
+.ti -1c
+.RI "void \fBprocessKeyboard\fP (\fBCamera_Movement\fP direction, float deltaTime)"
+.br
+.RI "Processes input received from any keyboard-like input system\&. Accepts input parameter in the form of camera defined ENUM such as Camera::Camera_Movement::RIGHT or Camera::Camera_Movement::UP (to abstract it from windowing systems)\&. This is adjustable using the SPEED variable\&. "
+.ti -1c
+.RI "void \fBprocessMouseMovement\fP (float xoffset, float yoffset)"
+.br
+.RI "Processes input received from a mouse input system\&. Expects the offset value in both the x and y direction\&. This is adjustable using the SENSITIVITY variable\&. "
+.ti -1c
+.RI "void \fBprocessMouseScroll\fP (\fBCamera_Movement\fP inout)"
+.br
+.RI "Processes input received from a mouse scroll-wheel event\&. Only requires input on the wheel-axis\&. "
+.ti -1c
+.RI "void \fBgetEulerAngles\fP ()"
+.br
+.RI "Calculates the Euler angles from the front vector\&. "
+.ti -1c
+.RI "void \fBgetFront\fP ()"
+.br
+.RI "Calculate the front vector from the Euler angles\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const float \fBonedegree\fP = acos(\-1\&.0f) / 180\&.0f"
+.br
+.RI "Default camera values\&. "
+.ti -1c
+.RI "const float \fBpi45\fP = acos(\-1\&.0f) / 4\&.0f"
+.br
+.RI "acos(-1) = pi\&. "
+.ti -1c
+.RI "const float \fBpi90\fP = acos(\-1\&.0f) / 2\&.0f"
+.br
+.ti -1c
+.RI "const float \fBpi180\fP = acos(\-1\&.0f)"
+.br
+.ti -1c
+.RI "const float \fBpi360\fP = acos(\-1\&.0f) * 2\&.0f"
+.br
+.ti -1c
+.RI "const float \fBYAW\fP = pi90"
+.br
+.ti -1c
+.RI "const float \fBPITCH\fP = 0\&.0f"
+.br
+.ti -1c
+.RI "const float \fBSPEED\fP = 0\&.05f"
+.br
+.ti -1c
+.RI "const float \fBSENSITIVITY\fP = 0\&.005f"
+.br
+.ti -1c
+.RI "const float \fBZOOM\fP = \fBpi45\fP"
+.br
+.ti -1c
+.RI "const vec3 \fBWORLDUP\fP = vec3(0\&.0f, \-1\&.0f, 0\&.0f)"
+.br
+.RI "Note that up in this world is -y\&. "
+.ti -1c
+.RI "vec3 \fBPosition\fP"
+.br
+.RI "Radian values to calculate location\&. "
+.ti -1c
+.RI "vec3 \fBFront\fP"
+.br
+.ti -1c
+.RI "vec3 \fBUp\fP"
+.br
+.ti -1c
+.RI "vec3 \fBFocus\fP"
+.br
+.ti -1c
+.RI "vec3 \fBRight\fP"
+.br
+.ti -1c
+.RI "vec3 \fBWorldUp\fP"
+.br
+.ti -1c
+.RI "vec3 \fBposition\fP"
+.br
+.RI "Persistent camera attributes\&. "
+.ti -1c
+.RI "vec3 \fBfocus\fP"
+.br
+.ti -1c
+.RI "vec3 \fBfront\fP"
+.br
+.ti -1c
+.RI "vec3 \fBupStart\fP"
+.br
+.RI "Missile position attributes\&. "
+.ti -1c
+.RI "vec3 \fBrightStart\fP"
+.br
+.ti -1c
+.RI "vec3 \fBfrontStart\fP"
+.br
+.ti -1c
+.RI "vec3 \fBmissilePos\fP"
+.br
+.ti -1c
+.RI "float \fByawStart\fP"
+.br
+.ti -1c
+.RI "float \fBpitchStart\fP"
+.br
+.ti -1c
+.RI "float \fBYaw\fP"
+.br
+.RI "Euler Angles: Large is current and small is persistent\&. "
+.ti -1c
+.RI "float \fByaw\fP"
+.br
+.ti -1c
+.RI "float \fBPitch\fP"
+.br
+.ti -1c
+.RI "float \fBpitch\fP"
+.br
+.ti -1c
+.RI "float \fBMovementSpeed\fP"
+.br
+.ti -1c
+.RI "float \fBMouseSensitivity\fP"
+.br
+.RI "Adjust this to account for the mouse movement\&. "
+.ti -1c
+.RI "float \fBZoom\fP"
+.br
+.RI "Zoom for a more detailed view of an object\&. "
+.ti -1c
+.RI "int \fBWidth\fP"
+.br
+.RI "Viewport dimensions\&. "
+.ti -1c
+.RI "int \fBHeight\fP"
+.br
+.ti -1c
+.RI "int \fBwidth\fP"
+.br
+.ti -1c
+.RI "int \fBheight\fP"
+.br
+.ti -1c
+.RI "mat4 \fBprojection\fP = mat4(1\&.0f)"
+.br
+.RI "Perspective matrix\&. "
+.ti -1c
+.RI "mat4 \fBrotateMissile\fP = mat4(1\&.0f)"
+.br
+.RI "Missile orientation\&. "
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.RI "Debug flag\&. Setting this to true will give debug data on the console\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for moving the camera about a 3-dimensional landscape\&. For use in OpenGL\&. This class relies heavily on GLM the OpenGL Math Library\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "mat4 Camera::multMat4 (mat4 itemone, mat4 itemtwo)"
+Multiply two mat4 matrices\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "float Camera::MovementSpeed"
+\fBCamera\fP options Adjust this to account for timing of the key movement\&. 
+.SS "vec3 Camera::Position"
+
+.PP
+Radian values to calculate location\&. \fBCamera\fP Attributes 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Assimp OpenGL from the source code\&.

@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+8dd1080cfe8cb8ff1e43773251b87f06 CMakeFiles/doc
+7803f61cb88c262e5b7cccac422c3ea4 datagen/assimpopengl/CMakeFiles/assimpdocs

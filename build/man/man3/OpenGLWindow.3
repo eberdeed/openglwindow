@@ -1,0 +1,240 @@
+.TH "OpenGLWindow" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpenGLWindow
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpenGLWindow\fP ()"
+.br
+.RI "Define various variables and the lights\&. "
+.ti -1c
+.RI "\fB~OpenGLWindow\fP ()"
+.br
+.RI "Delete the classes and variables used by this library\&. "
+.ti -1c
+.RI "void \fBexecDraw\fP (mat4 view, mat4 projection, vec3 viewPos)"
+.br
+.RI "Draw the scene\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdefineObjects\fP ()"
+.br
+.RI "Define the blender objects and sky box\&. "
+.ti -1c
+.RI "vec3 \fBgetDirection\fP (vec3 viewer, vec3 viewed)"
+.br
+.RI "Find the direction towards an object\&. "
+.ti -1c
+.RI "void \fBprintVec3\fP (vec3 vecVal)"
+.br
+.RI "Print a vec3 value\&. For debugging\&. "
+.ti -1c
+.RI "void \fBprintMat4\fP (mat4 matVal)"
+.br
+.RI "Print a mat4 value\&. For debugging\&. "
+.ti -1c
+.RI "void \fBdebug\fP (vector< \fBModelInfo\fP >\fBmodel\fP, vec3 viewPos)"
+.br
+.RI "Print the blender model definition data\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBskyBoxNames\fP [6]"
+.br
+.RI "File names for the sky box\&. "
+.ti -1c
+.RI "\fBShader\fP * \fBshader\fP"
+.br
+.RI "The shader programs;\&. "
+.ti -1c
+.RI "\fBShader\fP * \fBskyboxShader\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP * \fBexplodeShader\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP * \fBcloudShader\fP"
+.br
+.ti -1c
+.RI "\fBModel\fP * \fBmodel\fP"
+.br
+.RI "The assimpopengl entrance point class\&. "
+.ti -1c
+.RI "\fBCreateImage\fP * \fBimage\fP"
+.br
+.RI "The image management class, also from assimpopengl\&. "
+.ti -1c
+.RI "unsigned int \fBskyboxVAO\fP"
+.br
+.RI "The sky box handles\&. "
+.ti -1c
+.RI "unsigned int \fBskyboxVBO\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBskyBox\fP"
+.br
+.ti -1c
+.RI "const float \fBpi90\fP = acos(\-1\&.0f) / 2\&.0f"
+.br
+.RI "Radian measurements for rotations\&. "
+.ti -1c
+.RI "const float \fBpi180\fP = acos(\-1\&.0f)"
+.br
+.ti -1c
+.RI "mat4 \fBvertmodel\fP"
+.br
+.RI "The affine transform of the given blender object's position\&. "
+.ti -1c
+.RI "mat4 \fBboxmodel\fP"
+.br
+.ti -1c
+.RI "vec3 \fBtransvec\fP"
+.br
+.RI "The position of the blend object\&. "
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.RI "Debug flag\&. "
+.ti -1c
+.RI "vector< \fBModelInfo\fP > \fBmodelinfo\fP"
+.br
+.RI "Blender object definitions\&. "
+.ti -1c
+.RI "vec3 \fBpointLightPositions\fP [4]"
+.br
+.RI "Point light positions\&. "
+.ti -1c
+.RI "vec3 \fBspotLightPositions\fP [4]"
+.br
+.RI "Positions of the spot lights\&. "
+.ti -1c
+.RI "\fBPointLight\fP \fBlightItem\fP"
+.br
+.RI "Temporary variable to hold a point light\&. "
+.ti -1c
+.RI "vector< \fBPointLight\fP > \fBlights\fP"
+.br
+.RI "The point light definition array\&. "
+.ti -1c
+.RI "\fBSpotLight\fP \fBspotItem\fP"
+.br
+.RI "Temporary variable to hold a spot light\&. "
+.ti -1c
+.RI "vector< \fBSpotLight\fP > \fBspotLights\fP"
+.br
+.RI "The spot light definition array\&. "
+.ti -1c
+.RI "string \fBobjectVertexShader\fP = '/usr/share/openglresources/shaders/diffspecbinorm\&.vs'"
+.br
+.RI "Definition of the sky cube\&. "
+.ti -1c
+.RI "string \fBobjectFragmentShader\fP = '/usr/share/openglresources/shaders/diffspecbinorm\&.frag'"
+.br
+.ti -1c
+.RI "string \fBvertexSkyShader\fP = '/usr/share/openglresources/shaders/skyboxshader\&.vs'"
+.br
+.ti -1c
+.RI "string \fBfragmentSkyShader\fP = '/usr/share/openglresources/shaders/skyboxshader\&.frag'"
+.br
+.ti -1c
+.RI "string \fBexplodeVertex\fP = '/usr/share/openglresources/shaders/explode\&.vs'"
+.br
+.ti -1c
+.RI "string \fBexplodeFragment\fP = '/usr/share/openglresources/shaders/explode\&.frag'"
+.br
+.ti -1c
+.RI "string \fBcloudVertex\fP = '/usr/share/openglresources/shaders/cloud\&.vs'"
+.br
+.ti -1c
+.RI "string \fBcloudFragment\fP = '/usr/share/openglresources/shaders/cloud\&.frag'"
+.br
+.ti -1c
+.RI "GLfloat \fBskyboxVertices\fP [108]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+to define a scene and draw it using the libassimpopengl\&.so library\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void OpenGLWindow::defineObjects ()\fC [protected]\fP"
+
+.PP
+Define the blender objects and sky box\&. Set up the skybox VAO
+.PP
+Here is where the Blender object file name and position information are provided\&. For more information about the structure \fBModelInfo\fP see the file 'info\&.h'\&.
+.PP
+The individual item, reused many times\&.
+.PP
+The translation or location information\&.
+.PP
+The file name\&.
+.PP
+The position and orientation matrix\&.
+.PP
+Tack it onto the vector\&. 
+.SS "void OpenGLWindow::execDraw (mat4 view, mat4 projection, vec3 viewPos)"
+
+.PP
+Draw the scene\&. Pass into the shader the light definitions\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "vec3 OpenGLWindow::pointLightPositions[4]\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+    {
+        vec3( 20\&.0f,  10\&.0f,  20\&.0f),
+        vec3( -20\&.0f,  10\&.0f,  -20\&.0f),
+        vec3( -20\&.0f,  10\&.0f,  20\&.0f),
+        vec3( 20\&.0f,  10\&.0f, -20\&.0f),
+    }
+.fi
+.PP
+Point light positions\&. 
+.SS "string OpenGLWindow::skyBoxNames[6]\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+    {
+        "/usr/share/openglresources/skyboxes/mp_dot/dawn-of-time_rt\&.tga",
+        "/usr/share/openglresources/skyboxes/mp_dot/dawn-of-time_lf\&.tga",
+        "/usr/share/openglresources/skyboxes/mp_dot/dawn-of-time_up\&.tga",
+        "/usr/share/openglresources/skyboxes/mp_dot/dawn-of-time_dn\&.tga",
+        "/usr/share/openglresources/skyboxes/mp_dot/dawn-of-time_ft\&.tga",
+        "/usr/share/openglresources/skyboxes/mp_dot/dawn-of-time_bk\&.tga"
+    }
+.fi
+.PP
+File names for the sky box\&. 
+.SS "vec3 OpenGLWindow::spotLightPositions[4]\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+    {
+        vec3( 20\&.0f,  10\&.0f,  20\&.0f),
+        vec3( -20\&.0f,  10\&.0f,  -20\&.0f),
+        vec3( -20\&.0f,  10\&.0f,  20\&.0f),
+        vec3( 20\&.0f,  10\&.0f, -20\&.0f),
+    }
+.fi
+.PP
+Positions of the spot lights\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

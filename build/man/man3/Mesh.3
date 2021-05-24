@@ -1,0 +1,298 @@
+.TH "Mesh" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mesh
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMesh\fP ()"
+.br
+.RI "Empty constructor\&. "
+.ti -1c
+.RI "\fB~Mesh\fP ()"
+.br
+.RI "Deallocate buffers and arrays\&. "
+.ti -1c
+.RI "int \fBsetData\fP (\fBVertex\fP *\fBvertices\fP, GLuint *\fBindices\fP, vector< \fBTexture\fP >\fBtextures\fP, vec3 \fBcolordiff\fP, int \fBvertSize\fP, int indexSize, bool \fBinstanced\fP, int \fBquantity\fP, \fBShader\fP *\fBshader\fP, \fBShader\fP *explodeShader, int startIndex)"
+.br
+.RI "Provide the class with the data it need\&. vertices : The vertex array\&. indices : The index array\&. textures : The texture vector\&. colordiff : The untextured color\&. vertSize : The number of vertices\&. indexSize : The number of indices\&. instanced : The instancing flag\&. quantity : The number of instances\&. shader : The shader\&. explodeShader the shader for the explosion\&. cloudShader the shader for the gaseous cloud during the explosion\&. startIndex : The first available texture buffer\&. "
+.ti -1c
+.RI "void \fBDraw\fP (glm::mat4 view, glm::mat4 projection, mat4 model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP >spotLights, vec3 viewPos, bool diffOnly=true, float gamma=1\&.0f)"
+.br
+.RI "Pass in the data from the \fBModel\fP class to be realized here\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective function of GLM in the camera class\&. model is the position and orientation of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. "
+.ti -1c
+.RI "void \fBDrawInstanced\fP (mat4 view, mat4 projection, vector< mat4 >model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP >spotLights, vec3 viewPos, bool diffOnly, float gamma, unsigned int total)"
+.br
+.RI "A virtual function implemented and used by both classes to draw instanced data\&. The only difference from the above is that the model variable is a vector\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective function of GLM in the camera class\&. model is a vector of the various positions and orientations of the instances of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. total is the number of instances to be drawn\&. "
+.ti -1c
+.RI "void \fBdumpData\fP ()"
+.br
+.RI "For debugging\&. "
+.ti -1c
+.RI "void \fBdebug\fP (mat4 *modelData)"
+.br
+.RI "Debug instance data\&. "
+.ti -1c
+.RI "void \fBuniforms\fP ()"
+.br
+.RI "Debug uniform values for the shader\&. "
+.ti -1c
+.RI "void \fBsetupMesh\fP ()"
+.br
+.RI "Create the mesh data as an OpenGL buffer object\&. "
+.ti -1c
+.RI "void \fBprintVec3\fP (vec3 vecVal)"
+.br
+.RI "For debugging: Print a vector of three floats\&. "
+.ti -1c
+.RI "void \fBprintMat4\fP (mat4 matVal)"
+.br
+.RI "For debugging: Print a 4x4 matrix of floats\&. "
+.ti -1c
+.RI "void \fBexplosion\fP (mat4 model, mat4 view, mat4 projection, float timeVal)"
+.br
+.RI "Blow up the object\&. model is the position and orientation of the object\&. view is the camera position and orientation\&. projection is the Affine perspective matrix\&. timeVal is the current frame number\&. "
+.ti -1c
+.RI "string \fBgetType\fP ()"
+.br
+.RI "A convenience function to pass messages\&. "
+.ti -1c
+.RI "void \fBsetType\fP (string val)"
+.br
+.RI "A convenience function to post messages\&. "
+.ti -1c
+.RI "string \fBgetError\fP ()"
+.br
+.RI "For debugging: Display an OpenGL error message\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "GLuint * \fBindices\fP"
+.br
+.RI "The index array\&. "
+.ti -1c
+.RI "vector< \fBTexture\fP > \fBtextures\fP"
+.br
+.RI "The associated textures as a vector -- contains texture buffers\&. "
+.ti -1c
+.RI "vec3 \fBcolordiff\fP = vec3(1\&.0f, 1\&.0f, 1\&.0f)"
+.br
+.RI "Untextured color\&. "
+.ti -1c
+.RI "mat4 * \fBinstanceArray\fP"
+.br
+.RI "The instance location and orientation array\&. "
+.ti -1c
+.RI "\fBShader\fP * \fBshader\fP"
+.br
+.RI "The shaders\&. "
+.ti -1c
+.RI "\fBShader\fP * \fBexplodeShader\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP * \fBcloudShader\fP"
+.br
+.ti -1c
+.RI "GLuint \fBVAO\fP"
+.br
+.RI "The buffer object handles\&. "
+.ti -1c
+.RI "GLuint \fBVBO\fP [2]"
+.br
+.ti -1c
+.RI "GLuint \fBEBO\fP"
+.br
+.ti -1c
+.RI "int \fBvertSize\fP"
+.br
+.RI "The upper bounds of the various buffers\&. "
+.ti -1c
+.RI "int \fBindexSize\fP"
+.br
+.ti -1c
+.RI "int \fBtexSize\fP"
+.br
+.ti -1c
+.RI "int \fBtotal\fP"
+.br
+.ti -1c
+.RI "bool \fBdebug1\fP = false"
+.br
+.ti -1c
+.RI "bool \fBstart\fP = true"
+.br
+.ti -1c
+.RI "string \fBtype\fP"
+.br
+.RI "Message data\&. "
+.ti -1c
+.RI "float \fBopacity\fP = 1\&.0f"
+.br
+.RI "The object's opaqueness\&. "
+.ti -1c
+.RI "bool \fBinstanced\fP = false"
+.br
+.RI "The instancing flag\&. "
+.ti -1c
+.RI "int \fBquantity\fP = 1"
+.br
+.RI "The maximum instancing quantity and the uniform index\&. "
+.ti -1c
+.RI "int \fBdataIndex\fP = 0"
+.br
+.ti -1c
+.RI "\fBVertex\fP * \fBvertices\fP"
+.br
+.RI "The \fBVertex\fP array\&. "
+.ti -1c
+.RI "\fBVertex\fP * \fBverticesIndexed\fP"
+.br
+.RI "The flat indexed \fBVertex\fP array\&. "
+.ti -1c
+.RI "unsigned \fBintdummyTex\fP = 500"
+.br
+.RI "Sampler values\&. "
+.ti -1c
+.RI "bool \fBdifftrigger\fP = true"
+.br
+.ti -1c
+.RI "bool \fBspectrigger\fP = true"
+.br
+.ti -1c
+.RI "bool \fBheighttrigger\fP = true"
+.br
+.ti -1c
+.RI "bool \fBisDiff\fP"
+.br
+.ti -1c
+.RI "bool \fBisDiffTwo\fP"
+.br
+.ti -1c
+.RI "bool \fBisSpec\fP"
+.br
+.ti -1c
+.RI "bool \fBisBinorm\fP"
+.br
+.ti -1c
+.RI "bool \fBdiffOnly\fP"
+.br
+.ti -1c
+.RI "int \fBdiffOne\fP"
+.br
+.ti -1c
+.RI "int \fBdiffTwo\fP"
+.br
+.ti -1c
+.RI "int \fBspecOne\fP"
+.br
+.ti -1c
+.RI "int \fBbinormOne\fP"
+.br
+.ti -1c
+.RI "int \fBdummyTex\fP = 500"
+.br
+.ti -1c
+.RI "int \fBdiffOneX\fP = 0"
+.br
+.ti -1c
+.RI "int \fBdiffTwoX\fP = 0"
+.br
+.ti -1c
+.RI "int \fBspecOneX\fP = 0"
+.br
+.ti -1c
+.RI "int \fBbinormOneX\fP = 0"
+.br
+.ti -1c
+.RI "int \fBnumDiff\fP = 0"
+.br
+.ti -1c
+.RI "int \fBmaxVal\fP = 0"
+.br
+.ti -1c
+.RI "vector< int > \fBchunks\fP"
+.br
+.RI "The chunk size vector\&. "
+.ti -1c
+.RI "vec3 \fBvert\fP"
+.br
+.RI "The number of vertices\&. "
+.ti -1c
+.RI "int \fBcurrVal\fP = 0"
+.br
+.RI "The current vertex index for finding the normal to use as a direction vector\&. "
+.ti -1c
+.RI "int \fBchunkSize\fP = 0"
+.br
+.RI "The size of the current chunk\&. "
+.ti -1c
+.RI "int \fBchunkCount\fP = 0"
+.br
+.RI "The total number of chunks\&. "
+.ti -1c
+.RI "int \fBcount\fP = 0"
+.br
+.RI "A counter\&. "
+.ti -1c
+.RI "mat4 \fBchunkLoc\fP"
+.br
+.RI "The chunk's location and orientation\&. "
+.ti -1c
+.RI "mat4 \fBchunkArray\fP []"
+.br
+.RI "The array of chunk locations and orientation\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+that encapsulates creating and displaying of a mesh\&. It can produce both textured and untextured meshes and provides for blowing up the object\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Mesh::Draw (glm::mat4 view, glm::mat4 projection, mat4 model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP > spotLights, vec3 viewPos, bool diffOnly = \fCtrue\fP, float gamma = \fC1\&.0f\fP)"
+
+.PP
+Pass in the data from the \fBModel\fP class to be realized here\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective function of GLM in the camera class\&. model is the position and orientation of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. Draw the object\&. Bind appropriate textures Here we allow for the three types of textures: Diffuse, specular and binormal or bumpmap\&. 
+.SS "void Mesh::DrawInstanced (mat4 view, mat4 projection, vector< mat4 > model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP > spotLights, vec3 viewPos, bool diffOnly, float gamma, unsigned int total)"
+
+.PP
+A virtual function implemented and used by both classes to draw instanced data\&. The only difference from the above is that the model variable is a vector\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective function of GLM in the camera class\&. model is a vector of the various positions and orientations of the instances of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. total is the number of instances to be drawn\&. Draw the object\&. Bind appropriate textures Here we allow for the three types of textures: Diffuse, specular and binormal or bumpmap\&.
+.PP
+Pass the image indices and cube distances\&. 
+.SS "void Mesh::explosion (mat4 model, mat4 view, mat4 projection, float timeVal)"
+
+.PP
+Blow up the object\&. model is the position and orientation of the object\&. view is the camera position and orientation\&. projection is the Affine perspective matrix\&. timeVal is the current frame number\&. Pass the vertex location information\&. 
+.SS "int Mesh::setData (\fBVertex\fP * vertices, GLuint * indices, vector< \fBTexture\fP > textures, vec3 colordiff, int vertSize, int indexSize, bool instanced, int quantity, \fBShader\fP * shader, \fBShader\fP * explodeShader, int startIndex)"
+
+.PP
+Provide the class with the data it need\&. vertices : The vertex array\&. indices : The index array\&. textures : The texture vector\&. colordiff : The untextured color\&. vertSize : The number of vertices\&. indexSize : The number of indices\&. instanced : The instancing flag\&. quantity : The number of instances\&. shader : The shader\&. explodeShader the shader for the explosion\&. cloudShader the shader for the gaseous cloud during the explosion\&. startIndex : The first available texture buffer\&. Create individual chunks for the explosion\&. Each chunk has chunkSize * 3 vertices (chunkSize triangles)\&.
+.PP
+Bind appropriate textures Here we allow for the three types of textures: Diffuse, specular and binormal or bumpmap\&.
+.PP
+\fBTexture\fP present\&. 
+.SS "void Mesh::setupMesh ()"
+
+.PP
+Create the mesh data as an OpenGL buffer object\&. Allocate the vertex array and index buffer\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "int Mesh::diffOne"
+These integers contain the buffer values for the diffuse, specular and binormal textures\&. If no texture is assigned a dummy value is given\&. 
+.SS "int Mesh::diffOneX = 0"
+These integers tell what the index of the texture is in the texture vector for each type of texture\&. numDiff is the number of diffuse textures\&. 
+.SS "bool Mesh::difftrigger = true"
+These booleans indicate no diffuse, specular or binormal textures have been assigned\&. When the program assigns a valid buffer value for that texture they are triggered to false\&. Later they are used to assign dummy values to buffers with no texture and indicate that no texture of a given type is present\&. 
+.SS "bool Mesh::isDiff"
+These booleans are switched to true if there is a diffuse, specular or binormal texture found\&. 
+.SS "int Mesh::maxVal = 0"
+The explosion chunk data\&. The maximum possible number of chunks\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

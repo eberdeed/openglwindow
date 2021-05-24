@@ -1,0 +1,302 @@
+.TH "Model" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Model
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBModel\fP (vector< \fBModelInfo\fP > \fBmodelinfo\fP, \fBShader\fP *\fBshader\fP, \fBShader\fP *explodeShader, \fBShader\fP *cloudShader, int \fBstartIndex\fP)"
+.br
+.RI "Pass a vector containing file names of asset files and their associated positions and orientations\&. modelinfo the assets\&. shader the associated shader\&. explodeShader the shader for the explosion\&. cloudShader the shader for the gaseous cloud during the explosion\&. startIndex the first valid available texture buffer\&. "
+.ti -1c
+.RI "\fBModel\fP (vector< \fBModelInfo\fP > \fBmodelinfo\fP, \fBShader\fP *\fBshader\fP, \fBShader\fP *explodeShader, \fBShader\fP *cloudShader, int \fBstartIndex\fP, int \fBquantity\fP)"
+.br
+.RI "Pass a vector containing file names of asset files and their associated positions and orientations along with the associated shaders\&. modelinfo : The assets\&. shader : The shader\&. explodeShader : The shader for the explosion\&. cloudShader : The shader for the gaseous cloud during the explosion\&. startIndex : The first valid available texture buffer\&. quantity : The maximum number of instanced objects from each object\&. "
+.ti -1c
+.RI "\fB~Model\fP ()"
+.br
+.RI "Destructor, signals destruction of the class\&. It deletes the textures and meshes\&. "
+.ti -1c
+.RI "void \fBDraw\fP (int index, glm::mat4 view, glm::mat4 projection, vector< \fBModelInfo\fP >model, vector< \fBPointLight\fP >lights, vector< \fBSpotLight\fP >spotLights, vec3 viewPos)"
+.br
+.RI "Draw the assets that were obtained\&. Pass along the positions of the point lights and spotlights as well as the position and orientation of each object being displayed\&. view : The position and orientation of the camera\&. projection : The perspective for which I use the perspective function of GLM in the camera class\&. model : The position and orientation of the mesh being drawn\&. lights : The point lights defined by the \fBPointLight\fP structure\&. spotLights : Spotlights defined by the \fBSpotLight\fP structure\&. viewPos : The camera position\&. "
+.ti -1c
+.RI "void \fBDrawInstanced\fP (mat4 view, mat4 projection, vector< \fBModelInfo\fP >model, vector< mat4 >instanceData, vector< \fBPointLight\fP >lights, vector< \fBSpotLight\fP >spotLights, vec3 viewPos, unsigned int totals[])"
+.br
+.RI "Draw the assets that were obtained as an instanced object\&. Pass along the positions of the point lights and spotlights as well as the position and orientation of each object being displayed\&. view is the position and orientation of the camera\&. projection : The perspective for which I use the perspective function of GLM in the camera class\&. model : The model definition data\&. instanceData : The position and orientation of each instance\&. lights : The point lights defined by the \fBPointLight\fP structure\&. spotLights : Spotlights defined by the \fBSpotLight\fP structure\&. viewPos : The camera position\&. totals : The number of instances for each object\&. "
+.ti -1c
+.RI "bool \fBhasTextures\fP ()"
+.br
+.RI "Accessor function to let the calling class know whether there are textures or not\&. "
+.ti -1c
+.RI "float \fBDrawExplosion\fP (int index, mat4 view, mat4 projection, vector< \fBModelInfo\fP >modelobj)"
+.br
+.RI "Draw an explosion of the object where: index : the index of the object in the modelinfo vector\&. view : The Affine matrices defining the camera position and orientation\&. projection : The Affine matrix defining the perspective of the scene\&. model : The current asset vector containing the position and orientation of the object\&. "
+.ti -1c
+.RI "void \fBzeroTime\fP ()"
+.br
+.RI "Zero out exposion time\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBloadModel\fP (string path)"
+.br
+.RI "Open the asset for extraction\&. Uses the Assimp library to obtain the data\&. "
+.ti -1c
+.RI "void \fBprocessNode\fP (aiNode *node, const aiScene *scene)"
+.br
+.RI "Process a node and all its subnodes, extracting meshes and textures\&. "
+.ti -1c
+.RI "\fBMeshInfo\fP \fBprocessMesh\fP (aiMesh *\fBmesh\fP, const aiScene *scene)"
+.br
+.RI "Extract the textures, vertices, indices, texture coordinates and others\&. "
+.ti -1c
+.RI "void \fBsortDists\fP (vec3 viewPos)"
+.br
+.RI "Sort the objects by their distance from the camera\&. Furthest first, closest last\&. "
+.ti -1c
+.RI "void \fBsortIDs\fP ()"
+.br
+.ti -1c
+.RI "vector< \fBTexture\fP > \fBloadMaterialTextures\fP (aiMaterial *mat, aiTextureType type, string typeName)"
+.br
+.RI "Get the texture from the assimp material file\&. "
+.ti -1c
+.RI "GLint \fBTextureFromFile\fP (string filename)"
+.br
+.RI "Get the image data from the file containing the texture image, it uses Free Image Plus and the \fBCreateImage\fP class and creates an OpenGL bufferobject\&. "
+.ti -1c
+.RI "void \fBdebug\fP (vector< mat4 >instanceData)"
+.br
+.RI "Print the instance data info\&. "
+.ti -1c
+.RI "void \fBprintVec3\fP (vec3 vecVal)"
+.br
+.RI "Prints a three float vector\&. For debugging "
+.ti -1c
+.RI "void \fBprintMat4\fP (mat4 matVal)"
+.br
+.RI "Print a 4x4 matrix\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBcmpdist\fP (const \fBModelInfo\fP &a, const \fBModelInfo\fP &b)"
+.br
+.RI "Compare distances\&. "
+.ti -1c
+.RI "static bool \fBcmpid\fP (const \fBModelInfo\fP &a, const \fBModelInfo\fP &b)"
+.br
+.RI "Compares ID values for sorting\&. "
+.ti -1c
+.RI "static void \fBsndMaker\fP ()"
+.br
+.RI "The explosion sound producer\&. Uses SDL2\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "vector< \fBModelInfo\fP > \fBmodelinfo\fP"
+.br
+.RI "The model description vector\&. For information on the \fBModelInfo\fP structure see the 'info\&.h' file\&. "
+.ti -1c
+.RI "vector< \fBMeshInfo\fP > \fBmeshes\fP"
+.br
+.ti -1c
+.RI "vector< \fBTexture\fP > \fBtextures\fP"
+.br
+.RI "The textures vector, one for each textured mesh\&. \fBTexture\fP is defined in 'assimpopengl\&.h\&.'\&. "
+.ti -1c
+.RI "aiMesh * \fBmesh\fP"
+.br
+.RI "The current mesh being worked on\&. "
+.ti -1c
+.RI "int \fBstartIndex\fP"
+.br
+.RI "The texture count start index\&. "
+.ti -1c
+.RI "\fBSmokeCloud\fP * \fBcloud\fP"
+.br
+.RI "The cloud of smoke\&. "
+.ti -1c
+.RI "GLuint * \fBindices\fP = nullptr"
+.br
+.RI "The index array\&. "
+.ti -1c
+.RI "\fBVertex\fP * \fBvertices\fP = nullptr"
+.br
+.RI "The textured mesh vertex array\&. "
+.ti -1c
+.RI "\fBCreateImage\fP * \fBimageMkr\fP"
+.br
+.RI "The image management class\&. "
+.ti -1c
+.RI "Assimp::Importer * \fBimport\fP"
+.br
+.RI "The Assimp library importer\&. "
+.ti -1c
+.RI "int \fBvertSize\fP"
+.br
+.RI "The size of the \fBVertex\fP and Index arrays respectively\&. "
+.ti -1c
+.RI "int \fBindexSize\fP"
+.br
+.ti -1c
+.RI "float \fBtimeVal\fP = 0\&.0f"
+.br
+.ti -1c
+.RI "bool \fBhasTex\fP"
+.br
+.RI "\fBTexture\fP flag\&. "
+.ti -1c
+.RI "string \fBdirectory\fP"
+.br
+.RI "Variables to hold the directory and filename for image access\&. "
+.ti -1c
+.RI "string \fBfilename\fP"
+.br
+.ti -1c
+.RI "GLuint \fBtexcount\fP = 0"
+.br
+.RI "Book keeping variables\&. "
+.ti -1c
+.RI "GLuint \fBvertcount\fP = 0"
+.br
+.ti -1c
+.RI "GLuint \fBcount1\fP = 0"
+.br
+.ti -1c
+.RI "GLuint \fBlimit\fP = 0"
+.br
+.ti -1c
+.RI "float \fBopacity\fP = 1\&.0f"
+.br
+.RI "The alpha value for the shader\&. "
+.ti -1c
+.RI "int \fBquantity\fP = \-1"
+.br
+.RI "The number of instances of each object\&. "
+.ti -1c
+.RI "\fBShader\fP * \fBshader\fP"
+.br
+.RI "The shaders\&. "
+.ti -1c
+.RI "\fBShader\fP * \fBexplodeShader\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP * \fBcloudShader\fP"
+.br
+.ti -1c
+.RI "vector< mat4 > \fBmodelData\fP"
+.br
+.RI "The instance array\&. "
+.ti -1c
+.RI "vec3 \fBcolordiff\fP = vec3(1\&.0f, 1\&.0f, 1\&.0f)"
+.br
+.RI "Untextured color\&. "
+.ti -1c
+.RI "SDL_Thread * \fBthread\fP"
+.br
+.RI "The sound thread\&. "
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static constexpr bool \fBdebug1\fP = false"
+.br
+.RI "Copious debug info to be had a the price of a single boolean value\&. "
+.ti -1c
+.RI "static constexpr char \fBexplosionSound\fP [60]"
+.br
+.RI "The sound of the explosion\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to extract 3D asset data from a resource file and pass it along to the mesh files for display\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Model::Model (vector< \fBModelInfo\fP > modelinfo, \fBShader\fP * shader, \fBShader\fP * explodeShader, \fBShader\fP * cloudShader, int startIndex)"
+
+.PP
+Pass a vector containing file names of asset files and their associated positions and orientations\&. modelinfo the assets\&. shader the associated shader\&. explodeShader the shader for the explosion\&. cloudShader the shader for the gaseous cloud during the explosion\&. startIndex the first valid available texture buffer\&. Load each asset one-by-one\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Model::cmpdist (const \fBModelInfo\fP & a, const \fBModelInfo\fP & b)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Compare distances\&. Less than operator for stable_sort\&. 
+.SS "bool Model::cmpid (const \fBModelInfo\fP & a, const \fBModelInfo\fP & b)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Compares ID values for sorting\&. Less than operator for stable_sort\&. 
+.SS "void Model::Draw (int index, glm::mat4 view, glm::mat4 projection, vector< \fBModelInfo\fP > model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP > spotLights, vec3 viewPos)"
+
+.PP
+Draw the assets that were obtained\&. Pass along the positions of the point lights and spotlights as well as the position and orientation of each object being displayed\&. view : The position and orientation of the camera\&. projection : The perspective for which I use the perspective function of GLM in the camera class\&. model : The position and orientation of the mesh being drawn\&. lights : The point lights defined by the \fBPointLight\fP structure\&. spotLights : Spotlights defined by the \fBSpotLight\fP structure\&. viewPos : The camera position\&. Draw each asset as a series of meshes\&. 
+.SS "void Model::DrawInstanced (mat4 view, mat4 projection, vector< \fBModelInfo\fP > model, vector< mat4 > instanceData, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP > spotLights, vec3 viewPos, unsigned int totals[])"
+
+.PP
+Draw the assets that were obtained as an instanced object\&. Pass along the positions of the point lights and spotlights as well as the position and orientation of each object being displayed\&. view is the position and orientation of the camera\&. projection : The perspective for which I use the perspective function of GLM in the camera class\&. model : The model definition data\&. instanceData : The position and orientation of each instance\&. lights : The point lights defined by the \fBPointLight\fP structure\&. spotLights : Spotlights defined by the \fBSpotLight\fP structure\&. viewPos : The camera position\&. totals : The number of instances for each object\&. Draw each asset as a series of meshes\&. 
+.SS "bool Model::hasTextures ()"
+
+.PP
+Accessor function to let the calling class know whether there are textures or not\&. Let SceneMkr the calling class know if there are images as textures\&. 
+.SS "vector< \fBTexture\fP > Model::loadMaterialTextures (aiMaterial * mat, aiTextureType type, string typeName)\fC [protected]\fP"
+
+.PP
+Get the texture from the assimp material file\&. Check for existing texture and load as needed\&. 
+.SS "void Model::loadModel (string path)\fC [protected]\fP"
+
+.PP
+Open the asset for extraction\&. Uses the Assimp library to obtain the data\&. Read an asset file using the Assimp library\&. 
+.SS "\fBMeshInfo\fP Model::processMesh (aiMesh * mesh, const aiScene * scene)\fC [protected]\fP"
+
+.PP
+Extract the textures, vertices, indices, texture coordinates and others\&. Process a single mesh\&. Textured mesh\&.
+.PP
+Here we check for all the texture types even though we are only using three: diffuse - color, specular - highlights, height - bumps\&.
+.PP
+Untextured mesh\&. 
+.SS "void Model::processNode (aiNode * node, const aiScene * scene)\fC [protected]\fP"
+
+.PP
+Process a node and all its subnodes, extracting meshes and textures\&. Process a node and all subnodes\&. 
+.SS "void Model::sortDists (vec3 viewPos)\fC [protected]\fP"
+
+.PP
+Sort the objects by their distance from the camera\&. Furthest first, closest last\&. cout << '\\n\\n\\tDistance: ' << x << ' : ' << modelinfo[x]\&.dist;
+.PP
+Sort uses the algorithm library\&. 
+.SS "void Model::sortIDs ()\fC [protected]\fP"
+Sort the objects by idval\&. We use this to reassign the meshes to each object when the draw function is called\&. Sort uses the algorithm library\&. 
+.SS "GLint Model::TextureFromFile (string filename)\fC [protected]\fP"
+
+.PP
+Get the image data from the file containing the texture image, it uses Free Image Plus and the \fBCreateImage\fP class and creates an OpenGL bufferobject\&. Use the \fBCreateImage\fP class to turn an image into a texture\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "constexpr char Model::explosionSound[60]\fC [static]\fP, \fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= 
+    "/usr/share/openglresources/sounds/doubleexplosion\&.wav"
+.fi
+.PP
+The sound of the explosion\&. 
+.SS "vector<\fBMeshInfo\fP> Model::meshes\fC [protected]\fP"
+A vector of \fBMesh\fP classes, can be both MeshTex and MeshVert because they are both implementations of \fBMesh\fP\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

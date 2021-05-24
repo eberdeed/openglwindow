@@ -1,0 +1,114 @@
+.TH "MeshVert" 3 "Wed May 19 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MeshVert
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMesh\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMeshVert\fP ()"
+.br
+.RI "Empty constructor\&. "
+.ti -1c
+.RI "\fB~MeshVert\fP ()"
+.br
+.RI "Destructor destroying a vertex array and an index buffer\&. "
+.ti -1c
+.RI "void \fBsetData\fP (\fBVertex1\fP *\fBvertices\fP, GLuint *\fBindices\fP, vec3 color, int \fBvertSize\fP, int indexSize, bool \fBinstanced\fP=false, int \fBquantity\fP=1, \fBShader\fP *\fBshader\fP=nullptr)"
+.br
+.RI "Pass the data necessary to display a three dimension object with no textures\&. vertices : The vertex array\&. indices : The index array\&. vertSize : The number of vertices\&. indexSize : The number of indices\&. instanced : The instancing flag\&. quantity : The number of instances\&. shader : The shader\&. "
+.ti -1c
+.RI "void \fBDraw\fP (\fBShader\fP *\fBshader\fP, glm::mat4 view, glm::mat4 projection, glm::mat4 model, vector< \fBPointLight\fP >lights, vector< \fBSpotLight\fP >spotLights, vec3 viewPos, int startIndex=0, bool diffOnly=true, float gamma=1\&.0f)"
+.br
+.RI "Pass data to be displayed here from the \fBModel\fP class\&. shader is an instance of the shader class\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective funcition of GLM in the camera class\&. model is the position and orientation of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. startIndex is the current index of the textures being used\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. "
+.ti -1c
+.RI "void \fBDraw\fP (\fBShader\fP *\fBshader\fP, mat4 view, mat4 projection, vector< mat4 >model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP >spotLights, vec3 viewPos, int startIndex=0, bool diffOnly=true, float gamma=1\&.0f)"
+.br
+.RI "A virtual function implemented and used by both classes to draw instanced data\&. The only difference from the above is that the model variable is a vector\&. shader is an instance of the shader class\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective funcition of GLM in the camera class\&. model is the position and orientation of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. startIndex is the current index of the textures being used\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. "
+.ti -1c
+.RI "void \fBdumpData\fP ()"
+.br
+.RI "Debugging function\&. "
+.ti -1c
+.RI "void \fBsetupMesh\fP ()"
+.br
+.RI "Create the vertex array buffer, buffer object and index buffers\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVertex1\fP * \fBvertices\fP"
+.br
+.RI "Class global variables\&. "
+.ti -1c
+.RI "GLuint * \fBindices\fP"
+.br
+.RI "The index array\&. "
+.ti -1c
+.RI "GLuint \fBVAO\fP"
+.br
+.RI "The OpenGL buffer object handles\&. "
+.ti -1c
+.RI "GLuint \fBVBO\fP [2]"
+.br
+.ti -1c
+.RI "GLuint \fBEBO\fP"
+.br
+.ti -1c
+.RI "int \fBvertSize\fP"
+.br
+.RI "The upper bounds of the vertex and index arrays respectively\&. "
+.ti -1c
+.RI "int \fBindexSize\fP"
+.br
+.ti -1c
+.RI "vec3 \fBcolordiff\fP = vec3(1\&.0f, 1\&.0f, 1\&.0f)"
+.br
+.RI "The default color of the object\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate the display of 3D assets acquired by the \fBModel\fP class using the Assimp library\&. This class is for meshes that do not contain any textures\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MeshVert::~MeshVert ()"
+
+.PP
+Destructor destroying a vertex array and an index buffer\&. Destroy array and buffers\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void MeshVert::Draw (\fBShader\fP * shader, mat4 view, mat4 projection, vector< mat4 > model, vector< \fBPointLight\fP > lights, vector< \fBSpotLight\fP > spotLights, vec3 viewPos, int startIndex = \fC0\fP, bool diffOnly = \fCtrue\fP, float gamma = \fC1\&.0f\fP)\fC [virtual]\fP"
+
+.PP
+A virtual function implemented and used by both classes to draw instanced data\&. The only difference from the above is that the model variable is a vector\&. shader is an instance of the shader class\&. view is the position and orientation of the camera\&. projection is the perspective for which I use the perspective funcition of GLM in the camera class\&. model is the position and orientation of the mesh being drawn\&. lights are point lights defined by the \fBPointLight\fP structure\&. spotLights are spotlights defined by the \fBSpotLight\fP structure\&. viewPos is the camera position\&. startIndex is the current index of the textures being used\&. diffOnly when set to true will provide an image without specular highlights\&. gamma controls brightness of the textured mesh\&. Draw object instanced\&. Pass the image indices and cube distances\&.
+.PP
+No texture present\&. 
+.PP
+Reimplemented from \fBMesh\fP\&.
+.SS "void MeshVert::setData (\fBVertex1\fP * vertices, GLuint * indices, vec3 color, int vertSize, int indexSize, bool instanced = \fCfalse\fP, int quantity = \fC1\fP, \fBShader\fP * shader = \fCnullptr\fP)"
+
+.PP
+Pass the data necessary to display a three dimension object with no textures\&. vertices : The vertex array\&. indices : The index array\&. vertSize : The number of vertices\&. indexSize : The number of indices\&. instanced : The instancing flag\&. quantity : The number of instances\&. shader : The shader\&. Pass along data to be displayed from the \fBModel\fP class\&. 
+.SS "void MeshVert::setupMesh ()\fC [virtual]\fP"
+
+.PP
+Create the vertex array buffer, buffer object and index buffers\&. Allocate array and buffers\&. Uniform buffer to feed the uniform\&. 
+.PP
+Reimplemented from \fBMesh\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVertex1\fP* MeshVert::vertices"
+
+.PP
+Class global variables\&. The vertex array\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

@@ -1,0 +1,95 @@
+.TH "OpenGLGlut" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpenGLGlut
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpenGLGlut\fP ()"
+.br
+.RI "Echo the creation of the class and initialize the program\&. "
+.ti -1c
+.RI "\fB~OpenGLGlut\fP ()"
+.br
+.RI "Destroy the program's variables\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBinitProg\fP ()"
+.br
+.RI "Create the window and start the sound\&. "
+.ti -1c
+.RI "static void \fBevents\fP ()"
+.br
+.RI "Draw the scene\&. "
+.ti -1c
+.RI "static void \fBprocessInput\fP (unsigned char key, int x, int y)"
+.br
+.RI "Handle keyboard input\&. "
+.ti -1c
+.RI "static void \fBspecialKeys\fP (int key, int x, int y)"
+.br
+.RI "Handle keys that do not have ASCII code definitions\&. "
+.ti -1c
+.RI "static void \fBmouseMove\fP (int x, int y)"
+.br
+.RI "Handle mouse motion\&. "
+.ti -1c
+.RI "static void \fBwindowEvent\fP (int width, int height)"
+.br
+.RI "Resize the window and OpenGL viewport\&. "
+.ti -1c
+.RI "static void * \fBsoundMaker\fP (void *arg)"
+.br
+.RI "Music creation function\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate the creation of a Glut window used for the drawing of an OpenGL scene\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void OpenGLGlut::events ()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Draw the scene\&. render 
+.SS "void OpenGLGlut::mouseMove (int x, int y)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Handle mouse motion\&. Call the camera class with the information about the movement of the mouse\&.
+.SS "void OpenGLGlut::processInput (unsigned char key, int x, int y)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Handle keyboard input\&. Use timing to create a cameraSpeed variable\&.
+.PP
+Forward motion\&.
+.PP
+Backwards motion\&.
+.PP
+Move left\&.
+.PP
+Move right\&.
+.PP
+Move up\&.
+.PP
+Move down\&.
+.PP
+Reset the camera\&.
+.PP
+Reverse the camera\&. 
+.SS "void OpenGLGlut::specialKeys (int key, int x, int y)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Handle keys that do not have ASCII code definitions\&. Zoom keys\&. Zoom in\&.
+.PP
+Zoom out\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

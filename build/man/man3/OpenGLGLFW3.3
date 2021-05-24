@@ -1,0 +1,128 @@
+.TH "OpenGLGLFW3" 3 "Mon May 24 2021" "The OpenGL Window Demo" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpenGLGLFW3
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpenGLGLFW3\fP ()"
+.br
+.RI "Echo the creation of the class and initialize the program\&. "
+.ti -1c
+.RI "\fB~OpenGLGLFW3\fP ()"
+.br
+.RI "Delete the program's objects\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitProg\fP ()"
+.br
+.RI "Initialize the window and start the sound\&. "
+.ti -1c
+.RI "void \fBevents\fP ()"
+.br
+.RI "The event loop to draw the scene\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBkeyDown\fP (GLFWwindow *\fBwindow\fP, int key, int scancode, int action, int mods)"
+.br
+.RI "Handle keyboard input\&. "
+.ti -1c
+.RI "static void \fBmouseMove\fP (GLFWwindow *\fBwindow\fP, double x, double y)"
+.br
+.RI "Handle mouse motion\&. "
+.ti -1c
+.RI "static void \fBwindowResize\fP (GLFWwindow *\fBwindow\fP, int width, int height)"
+.br
+.RI "Redefine OpenGL viewport and window size\&. "
+.ti -1c
+.RI "static void * \fBsoundMaker\fP (void *\fBarg\fP)"
+.br
+.RI "Create the background music\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "GLFWwindow * \fBwindow\fP"
+.br
+.RI "GLFW window handle\&. "
+.ti -1c
+.RI "\fBOpenGLWindow\fP * \fBdatagen\fP"
+.br
+.RI "The OpenGL scene to draw in the window\&. "
+.ti -1c
+.RI "\fBThreadCreate\fP * \fBsndthread\fP"
+.br
+.RI "The pthread to put the playing music in\&. "
+.ti -1c
+.RI "vector< \fBThreadInfo\fP > \fBthreadInfo\fP"
+.br
+.RI "The vector with the thread information\&. "
+.ti -1c
+.RI "mat4 \fBview\fP"
+.br
+.RI "The affine transformation matrices to define view and perspective\&. "
+.ti -1c
+.RI "mat4 \fBprojection\fP"
+.br
+.ti -1c
+.RI "vec3 \fBviewPos\fP"
+.br
+.RI "The camera position\&. "
+.ti -1c
+.RI "string \fBarg\fP = 'sound thread'"
+.br
+.RI "The name of the sound thread\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+window using the GLFW library\&. It displays a scene defined by libopenglscene\&.so\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void OpenGLGLFW3::events ()\fC [protected]\fP"
+
+.PP
+The event loop to draw the scene\&. render 
+.SS "void OpenGLGLFW3::keyDown (GLFWwindow * window, int key, int scancode, int action, int mods)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Handle keyboard input\&. Use timing to create a cameraSpeed variable\&.
+.PP
+Forward motion\&.
+.PP
+Backwards motion\&.
+.PP
+Move left\&.
+.PP
+Move right\&.
+.PP
+Move up\&.
+.PP
+Move down\&.
+.PP
+Reset the camera\&.
+.PP
+Reverse the camera\&.
+.PP
+Zoom keys\&. Zoom in\&.
+.PP
+Zoom out\&. 
+.SS "void OpenGLGLFW3::mouseMove (GLFWwindow * window, double x, double y)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Handle mouse motion\&. Call the camera class with the information about the movement of the mouse\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for The OpenGL Window Demo from the source code\&.

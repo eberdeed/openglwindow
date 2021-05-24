@@ -1,0 +1,153 @@
+.TH "Shader" 3 "Wed May 19 2021" "Assimp OpenGL" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Shader
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBShader\fP ()"
+.br
+.RI "The constructor signals the creation of the class\&. "
+.ti -1c
+.RI "\fB~Shader\fP ()"
+.br
+.RI "The destructor signals the destruction of the class, and deletes the shader program\&. "
+.ti -1c
+.RI "void \fBinitShader\fP (string vertexPath, string fragmentPath, string \fBoutputFile\fP)"
+.br
+.RI "A function to create the shader program from the vertex and fragment shader code and store the result in a binary program in the '~/\&.config' directory\&. vertexPath: The file location for the vertex shader code\&. fragmentPath: The file location for the fragment shader code\&. outputFile: The name of the resulting binary to be stored in the '~/\&.config' directory\&. "
+.ti -1c
+.RI "unsigned int \fBcreateShader\fP (unsigned int type, string fpath)"
+.br
+.RI "Create either the vertex or fragment shader from a file\&. type : the shader type\&. "
+.ti -1c
+.RI "void \fBUse\fP ()"
+.br
+.RI "Use the program object for display\&. "
+.ti -1c
+.RI "bool \fBcreateBinary\fP ()"
+.br
+.RI "Create the shader program binary save it to a file, and free the binary pointer afterward\&. "
+.ti -1c
+.RI "string \fBgetError\fP ()"
+.br
+.RI "OpenGL error reporting\&. "
+.ti -1c
+.RI "void \fBsetBool\fP (const string name, bool value) const"
+.br
+.RI "Utility uniform functions that set values in the shader program\&. "
+.ti -1c
+.RI "void \fBsetInt\fP (const string name, int value) const"
+.br
+.ti -1c
+.RI "void \fBsetFloat\fP (const string name, float value) const"
+.br
+.ti -1c
+.RI "void \fBsetVec2\fP (const std::string name, vec2 value) const"
+.br
+.ti -1c
+.RI "void \fBsetVec3\fP (const std::string name, vec3 value) const"
+.br
+.ti -1c
+.RI "void \fBsetVec4\fP (const string name, vec4 value) const"
+.br
+.ti -1c
+.RI "void \fBsetMat4\fP (const string name, mat4 value) const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBshadername\fP"
+.br
+.RI "A name for the shader\&. "
+.ti -1c
+.RI "GLuint \fBProgram\fP"
+.br
+.RI "The shader program object\&. "
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "typedef char * \fBchararray\fP[1]"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBchararray\fP \fBglShaderCode\fP"
+.br
+.ti -1c
+.RI "int \fBsuccess\fP = 0"
+.br
+.RI "Indicates success of OpenGL function calls\&. "
+.ti -1c
+.RI "int \fBinfoLength\fP = 0"
+.br
+.RI "Length of an OpenGL error message\&. "
+.ti -1c
+.RI "GLuint \fBvertex\fP"
+.br
+.RI "Handles for vertex and fragment shaders respectively\&. "
+.ti -1c
+.RI "GLuint \fBfragment\fP"
+.br
+.ti -1c
+.RI "int \fBprogLength\fP = 0"
+.br
+.RI "The length of the program in bytes\&. "
+.ti -1c
+.RI "int \fBprogLenRet\fP = 0"
+.br
+.RI "The length of the program binary in bytes\&. "
+.ti -1c
+.RI "GLenum * \fBvalFormats\fP"
+.br
+.RI "Formats for the stored binary program\&. "
+.ti -1c
+.RI "GLenum \fBformat\fP = 0"
+.br
+.RI "The value of an individual format type\&. "
+.ti -1c
+.RI "int \fBresponse\fP = 0"
+.br
+.RI "A variable indicating the successful loading of a stored program binary\&. "
+.ti -1c
+.RI "unsigned char * \fBbinary\fP"
+.br
+.RI "The binary program pointer\&. "
+.ti -1c
+.RI "string \fBoutputFile\fP"
+.br
+.ti -1c
+.RI "bool \fBdebug1\fP = true"
+.br
+.RI "Debugging information\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+to encapsulate the uploading, compiling, linking and use of a shader\&. This class will create a shader binary and reload it\&. The binary will be recreated if it ceases to validate as a shader program\&. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef char* Shader::chararray[1]\fC [protected]\fP"
+Interesting that the shader code has to be wrapped inside an array\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "string Shader::outputFile\fC [protected]\fP"
+The output file name\&. The final stored binary is stored int the \&.config directory of the user's home directory (~/\&.config)\&. 
+.SS "string Shader::shadername"
+
+.PP
+A name for the shader\&. Variables 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Assimp OpenGL from the source code\&.

@@ -1,0 +1,9 @@
+<map id="OpenGLWindow" name="OpenGLWindow">
+<area shape="rect" id="node2" href="$classShader.html" title="Shader" alt="" coords="189,5,252,32"/>
+<area shape="rect" id="node4" href="$classModel.html" title="Model" alt="" coords="176,245,233,272"/>
+<area shape="rect" id="node6" href="$classSmokeCloud.html" title="SmokeCloud" alt="" coords="416,103,513,130"/>
+<area shape="rect" id="node3" href="$classCreateImage.html" title="CreateImage" alt="" coords="60,103,157,130"/>
+<area shape="rect" id="node5" href="$structVertex.html" title="Assimp the Asset Importation Library. " alt="" coords="332,103,392,130"/>
+<area shape="rect" id="node7" href="$structSpotLight.html" title="A structure to define a spotlight. " alt="" coords="258,245,335,272"/>
+<area shape="rect" id="node8" href="$structPointLight.html" title="A structure to define a point light. " alt="" coords="359,245,439,272"/>
+</map>
