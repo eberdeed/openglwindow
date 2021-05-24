@@ -20,8 +20,8 @@
     
     To compile the program you will need the following libraries:
     FreeImage, GLEW, boost, pthread, Assimp, GLM, Xlib, SFML, and 
-    the window libaries, SDL2, freeglut, ClanLib-4.0, Allegro5, SFML,
-    and GLFW3. You must also have cmake and doxygen.
+    the window libaries, SDL2, freeglut, Allegro5, SFML, and GLFW3. 
+    You must also have cmake and doxygen.
     The commands are:
     
     mkdir build
@@ -40,7 +40,6 @@
     openglsdl2
     openglglut
     openglglfw3
-    openglcl40
     openglsfml
     
     The documentation is located in:
@@ -67,7 +66,6 @@
     SDL2 https://wiki.libsdl.org/FrontPage
     Allegro https://liballeg.org
     GLFW https://www.glfw.org
-    ClanLib http://freshmeat.sourceforge.net/projects/clanlib
     Glut http://freeglut.sourceforge.net
     Assimp https://www.assimp.org
     SFML https://www.sfml-dev.org
